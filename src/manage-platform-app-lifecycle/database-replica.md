@@ -64,12 +64,34 @@ Following up on your support case, OutSystems does the following:
 
 ### Granted permissions
 
-Only two read-only credentials are available with access to:
+Depending on your database management system, check below the permissions granted for **read-only** or **read and write** set of credentials.
 
-* ```OSUSR_*``` (business app tables)
+#### Read-only credentials { #read }
 
-* ```OSSYS_USER``` (Users system table)
+For SQL Server:
 
-* ```OSSYS_ROLE``` (Roles system table)
+* SELECT over all database tables and views
+* SHOWPLAN
+* VIEW DATABASE STATE
+* VIEW SERVER STATE
 
-* ```OSSYS_USER_ROLE``` (Roles per User system table).
+For Oracle:
+
+* SELECT over all database tables and views
+* SELECT ANY DICTIONARY
+
+All database tables and views include all OutSystems tables (both metamodel tables and application tables), and the database management system tables.
+
+### Read and write credentials { #read-write }
+
+Read and write database credentials grant all the permissions of read-only and add the below credentials.
+
+For SQL server:
+
+* INSERT, UPDATE, DELETE on application tables
+
+For Oracle:
+
+* INSERT, UPDATE, DELETE on application tables
+
+**Application tables** - Tables created by the Platform Server when you create entities in Service Studio. These tables use the prefix OSUSR.
